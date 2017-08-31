@@ -10,20 +10,20 @@ public class LedController {
 
     private static GpioPinDigitalOutput pin;
 
-    @RequestMapping("/")
+    @RequestMapping ("/")
     public String greeting() {
-        return "Hello world again";
+        return "Hello !";
     }
-
-    @RequestMapping("/light")
+    @RequestMapping ("/light")
     public String light() {
-        if (pin == null){
+        if (pin==null){
             GpioController gpio = GpioFactory.getInstance();
             pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "MyLED", PinState.LOW);
         }
-    pin.toggle();
+
+        pin.toggle();
 
         return "OK";
-    }
 
+    }
 }
